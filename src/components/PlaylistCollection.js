@@ -1,41 +1,46 @@
-import React, {useState} from 'react'
-import Playlist from './Playlist'
+import React, { useState } from "react"
 
-const PlaylistCollection = props => {
+import Playlist from "./Playlist"
+
+const PlaylistCollection = (props) => {
   const [selectedPlaylist, setSelectedPlaylist] = useState(null)
 
-  // onClick to set correct State
-  // change the styling of the playlist component
-  // check if playlist is selected or not
-
-  // wrapper function for the setter
-
-  
-  
-  let playlistsArray = props.playlists.map(playlistObject => {
-    let playlistStyle = ""
+  let playlistsArray = props.playlists.map((playlistObject) => {
     
+    // debugger
+
     const selectPlaylistWrapper = () => {
+      // debugger
       setSelectedPlaylist(playlistObject.id)
     }
+    
+    let playlistStyle = ""
 
-    if(playlistObject.id === selectedPlaylist){
+    if (playlistObject.id === selectedPlaylist) {
+      // debugger
       playlistStyle = "selected"
     }
 
-    return <Playlist 
-                key={playlistObject.id} 
-                selectPlaylistWrapper={selectPlaylistWrapper} 
-                playlistData={playlistObject} 
-                playlistStyle={playlistStyle} />
-  } ) 
+    // debugger
+
+    return (
+      <Playlist 
+        key={playlistObject.id}
+        playlistData={playlistObject}
+        selectPlaylistWrapper={selectPlaylistWrapper}
+        playlistStyle={playlistStyle}
+      />
+    )
+  })
+
+  // debugger
 
   return (
-    <div>
+    <div className="cell small-6">
       <h1>Playlists</h1>
       {playlistsArray}
     </div>
   )
 }
 
-export default PlaylistCollection;
+export default PlaylistCollection
